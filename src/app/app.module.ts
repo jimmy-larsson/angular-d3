@@ -8,6 +8,7 @@ import { NodeVisualComponent } from './d3/visuals/shared/node-visual/node-visual
 import { LinkVisualComponent } from './d3/visuals/shared/link-visual/link-visual.component';
 import { ZoomableDirective } from './d3/directives/zoomable.directive';
 import { D3Service } from './d3/d3.service';
+import { DraggableDirective } from './d3/directives/draggable.directive';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { D3Service } from './d3/d3.service';
     NodeVisualComponent,
     LinkVisualComponent,
     ZoomableDirective,
+    DraggableDirective,
   ],
   imports: [
     BrowserModule,
