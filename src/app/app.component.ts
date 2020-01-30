@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Node, Link} from './d3/models';
 
 @Component({
   selector: 'app-root',
