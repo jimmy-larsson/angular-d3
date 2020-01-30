@@ -8,7 +8,7 @@ const FORCES = {
   LINKS: 1 / 50,
   COLLISION: 1,
   CHARGE: -1
-}
+};
 
 export class ForceDirectedGraph {
   public ticker: EventEmitter<d3.Simulation<Node, Link>> = new EventEmitter();
@@ -17,31 +17,16 @@ export class ForceDirectedGraph {
   public nodes: Node[] = [];
   public links: Link[] = [];
 
-  constructor(nodes, links, options: { width, height }) {
+  constructor(nodes: Node[], links: Link[], options: { width: number, height: number }) {
     this.nodes = nodes;
     this.links = links;
 
     this.initSimulation(options);
   }
 
-  connectNodes(source, target) {
-    let link;
-
-    if (!this.nodes[source] || !this.nodes[target]) {
-      throw new Error('One of the nodes does not exist');
-    }
-
-    link = new Link(source, target);
-    this.simulation.stop();
-    this.links.push(link);
-    this.simulation.alphaTarget(0.3).restart();
-
-    this.initLinks();
-  }
-
   initNodes() {
     if (!this.simulation) {
-      throw new Error('simulation was not initialized yet');
+      throw new Error('Simulation has not yet been initialized.');
     }
 
     this.simulation.nodes(this.nodes);
@@ -49,22 +34,18 @@ export class ForceDirectedGraph {
 
   initLinks() {
     if (!this.simulation) {
-      throw new Error('simulation was not initialized yet');
+      throw new Error('Simulation has not yet been initialized.');
     }
 
-    this.simulation.force('links',
-      d3.forceLink(this.links)
-        .id(d => d['id'])
-        .strength(FORCES.LINKS)
-    );
+    this.simulation.force('links', d3.forceLink(this.links).strength(FORCES.LINKS));
   }
 
   initSimulation(options) {
     if (!options || !options.width || !options.height) {
-      throw new Error('missing options when initializing simulation');
+      throw new Error('Missing options during simulation initialization.');
     }
 
-    /** Creating the simulation */
+    // Creating the simulation
     if (!this.simulation) {
       const ticker = this.ticker;
 
@@ -94,4 +75,5 @@ export class ForceDirectedGraph {
     /** Restarting the simulation internal timer */
     this.simulation.restart();
   }
+
 }
