@@ -3,6 +3,7 @@ import { Link } from './link';
 import { Node } from './node';
 import * as d3 from 'd3';
 
+// TODO: Use a 'config' object in the constructor instead.
 const FORCES = {
   LINKS: 1 / 50,
   COLLISION: 1,
@@ -16,11 +17,10 @@ export class ForceDirectedGraph {
   public nodes: Node[] = [];
   public links: Link[] = [];
 
-  constructor(nodes: Node[], links: Link[], options: { width, heigth }) {
+  constructor(nodes: Node[], links: Link[], options: { width: number, heigth: number }) {
     this.nodes = nodes;
     this.links = links;
 
-    console.log("calling init simulation: ", options);
     this.initSimulation(options);
   }
 
@@ -37,13 +37,12 @@ export class ForceDirectedGraph {
       throw new Error('Simulation has not yet been initialized.');
     }
 
-    // Initializing the links for the force simulation
     this.simulation.force('links', d3.forceLink(this.links).strength(FORCES.LINKS));
   }
 
   initSimulation(options) {
     if (!options || !options.width || !options.height) {
-    options = {width: 800, heigth: 600};
+      throw new Error('Missing options during simulation initialization.');
     }
 
     // Creating the simulation

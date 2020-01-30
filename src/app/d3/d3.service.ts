@@ -25,7 +25,7 @@ export class D3Service {
   applyDraggableBehaviour() {
   }
 
-  getForceDirectedGraph(nodes: Node[], links: Link[], options: { width, heigth }) {
+  getForceDirectedGraph(nodes: Node[], links: Link[], options: { width: number, heigth: number }) {
     const graph = new ForceDirectedGraph(nodes, links, options);
     return graph;
   }
