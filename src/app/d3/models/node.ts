@@ -29,10 +29,7 @@ export class Node implements d3.SimulationNodeDatum {
    */
   fy?: number | null;
 
-  // Custom - Fields not included in the original interface
-  /**
-   * Node id as an example for now //TODO: Remove or think of something more interesting
-   */
+  // Custom - Fields, functions and getters not included in the original interface
   id: string;
   linkCount = 0;
 
@@ -40,19 +37,38 @@ export class Node implements d3.SimulationNodeDatum {
     this.id = id;
   }
 
-  normal = () => {
+  /**
+   * Function for normalizing node values such as color, radius, font size and so on.
+   */
+  normalize = () => {
     return Math.sqrt(this.linkCount / 10);
   }
 
-  get r() {
-    return 50 * this.normal() + 10;
+  /**
+   * Getter for generating the visual node radius.
+   */
+  get radius() {
+    return 50 * this.normalize() + 10;
   }
 
+  /**
+   * Getter for generating the node color. Return value can be overridden using the override parameter.
+   */
+  get nodeColor() {
+    return '#000';
+  }
+
+  /**
+   * Getter for generating the node font size. Return value can be overridden using the override parameter.
+   */
   get fontSize() {
-    return (30 * this.normal() + 10) + 'px';
+    return (30 * this.normalize() + 10) + 'px';
   }
 
-  get color() {
-    return 10;
+  /**
+   * Getter for generating the node font color. Return value can be overridden using the override parameter.
+   */
+  get fontColor() {
+    return '#fff';
   }
 }

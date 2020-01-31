@@ -26,8 +26,24 @@ export class Link implements d3.SimulationLinkDatum<Node> {
    */
   index?: number;
 
+  // Custom - Fields, functions and getters not included in the original interface
+
   constructor(source, target) {
     this.source = source;
     this.target = target;
+  }
+
+  /**
+   * Getter for generating the stroke width of the line
+   */
+  get strokeWidth() {
+    return '1px';
+  }
+
+  /**
+   * Getter for generating the stroke color of the line
+   */
+  get strokeColor() {
+    return '#aaaaaa';
   }
 }

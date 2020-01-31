@@ -3,7 +3,7 @@ import { Link } from './link';
 import { Node } from './node';
 import * as d3 from 'd3';
 
-// TODO: Use a 'config' object in the constructor instead.
+// TODO: Use a config object that contains all relevant options (node color, force strenghts, etc)
 const FORCES = {
   LINKS: 1 / 50,
   COLLISION: 1,
@@ -22,21 +22,6 @@ export class ForceDirectedGraph {
     this.links = links;
 
     this.initSimulation(options);
-  }
-
-  connectNodes(source, target) {
-    let link;
-
-    if (!this.nodes[source] || !this.nodes[target]) {
-      throw new Error('One of the nodes does not exist');
-    }
-
-    link = new Link(source, target);
-    this.simulation.stop();
-    this.links.push(link);
-    this.simulation.alphaTarget(0.3).restart();
-
-    this.initLinks();
   }
 
   initNodes() {
@@ -67,16 +52,16 @@ export class ForceDirectedGraph {
       this.simulation = d3.forceSimulation()
         .force('charge',
           d3.forceManyBody()
-            .strength(d => FORCES.CHARGE * d['r'])
+            .strength(d => FORCES.CHARGE * d['radius'])
         )
         .force('collide',
           d3.forceCollide()
             .strength(FORCES.COLLISION)
-            .radius(d => d['r'] + 5).iterations(2)
+            .radius(d => d['radius'] + 5).iterations(2)
         );
 
       // Connecting the d3 ticker to an angular event emitter
-      this.simulation.on('tick', function () {
+      this.simulation.on('tick', function() {
         ticker.emit(this);
       });
 

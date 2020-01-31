@@ -17,7 +17,10 @@ export class D3Service {
    * A method used to bind a zoomable behaviour to an svg element.
    */
   applyZoomableBehaviour(svgElement, containerElement) {
-    let svg, container, zoomed, zoom;
+    let svg;
+    let container;
+    let zoomed;
+    let zoom;
 
     svg = d3.select(svgElement);
     container = d3.select(containerElement);
