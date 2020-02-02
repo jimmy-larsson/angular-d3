@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Node, Link } from './d3/models';
+import { Node, Link } from './d3/force-directed-graph/models';
 
 @Component({
   selector: 'd3-root',
