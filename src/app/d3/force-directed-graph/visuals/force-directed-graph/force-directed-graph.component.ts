@@ -3,11 +3,11 @@ import { D3Service } from '../../../d3.service';
 import { ForceDirectedGraph, Node, Link } from '../../models';
 
 @Component({
-  selector: 'd3-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
+  selector: 'd3-force-directed-graph',
+  templateUrl: './force-directed-graph.component.html',
+  styleUrls: ['./force-directed-graph.component.scss']
 })
-export class GraphComponent implements OnInit, AfterViewInit {
+export class ForceDirectedGraphComponent implements OnInit, AfterViewInit {
   @Input('nodes') nodes;
   @Input('links') links;
   graph: ForceDirectedGraph;
