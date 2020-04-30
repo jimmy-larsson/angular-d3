@@ -18,7 +18,11 @@ export class AppComponent {
 
     /** constructing the nodes array */
     for (let i = 1; i <= N; i++) {
-      this.nodes.push(new Node(i));
+      const node = new Node(i);
+      node.fontColor = '#2DD9CF';
+      node.color = '#360F08';
+
+      this.nodes.push(node);
     }
 
     for (let i = 1; i <= N; i++) {
@@ -28,7 +32,10 @@ export class AppComponent {
         this.nodes[getIndex(i * m)].linkCount++;
 
         /** connecting the nodes before starting the simulation */
-        this.links.push(new Link(i, i * m));
+        const link = new Link(i, i * m);
+        link.strokeWidth = '3px';
+        link. strokeColor = 'gray';
+        this.links.push(link);
       }
     }
   }

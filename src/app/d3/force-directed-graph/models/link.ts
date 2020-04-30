@@ -34,16 +34,39 @@ export class Link implements d3.SimulationLinkDatum<Node> {
   }
 
   /**
+   * Link's stroke width
+   */
+  private _strokeWidth: string;
+
+  /**
    * Getter for generating the stroke width of the line
    */
   get strokeWidth() {
-    return '1px';
+    return this._strokeWidth != null ? this._strokeWidth : '1px';
   }
+
+  /**
+   * Setter for overriding the default stroke width
+   * @param value - A value specifying the stroke width, defaults to 1px
+   */
+  set strokeWidth(value) {
+    this._strokeWidth = value;
+  }
+
+  private _strokeColor: string;
 
   /**
    * Getter for generating the stroke color of the line
    */
   get strokeColor() {
-    return '#aaaaaa';
+    return this._strokeColor != null ? this._strokeColor : '#aaaaaa';
+  }
+
+  /**
+   * Setter for overriding the default stroke color
+   * @param value - A value specifying the stroke color, defaults to #aaaaaa
+   */
+  set strokeColor(value) {
+    this._strokeColor = value;
   }
 }

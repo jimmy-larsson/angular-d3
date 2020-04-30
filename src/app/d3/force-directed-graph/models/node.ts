@@ -42,7 +42,7 @@ export class Node implements d3.SimulationNodeDatum {
    */
   normalize = () => {
     return Math.sqrt(this.linkCount / 10);
-  }
+  };
 
   /**
    * Getter for generating the visual node radius.
@@ -52,23 +52,49 @@ export class Node implements d3.SimulationNodeDatum {
   }
 
   /**
-   * Getter for generating the node color. Return value can be overridden using the override parameter.
+   * Node's color
    */
-  get nodeColor() {
-    return '#000';
+  private _color: string;
+
+  /**
+   * Getter for the node color.
+   */
+  get color() {
+    return this._color != null ? this._color : '#000';
   }
 
   /**
-   * Getter for generating the node font size. Return value can be overridden using the override parameter.
+   * Setter for overriding the default node color.
+   * @param value - A string specifying the color, defaults to #000.
+   */
+  set color(value) {
+    this._color = value;
+  }
+
+  /**
+   * Getter for the node font size.
    */
   get fontSize() {
     return (30 * this.normalize() + 10) + 'px';
   }
 
   /**
-   * Getter for generating the node font color. Return value can be overridden using the override parameter.
+   * Node's text color
+   */
+  private _fontColor: string;
+
+  /**
+   * Getter for the node font color.
    */
   get fontColor() {
-    return '#fff';
+    return this._fontColor != null ? this._fontColor : '#fff';
+  }
+
+  /**
+   * Setter for overriding the default font color.
+   * @param value - A string specifying the font color, defaults to #fff.
+   */
+  set fontColor(value) {
+    this._fontColor = value;
   }
 }
