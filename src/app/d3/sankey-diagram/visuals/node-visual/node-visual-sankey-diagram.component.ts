@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Node } from '../../../models/node';
-import { ExtraProperties } from '../../../models/extra-properties';
+import { Node } from '../../models/node';
+import { ExtraProperties } from '../../models/extra-properties';
+import * as d3 from 'd3';
 
 
 @Component({
@@ -10,8 +11,4 @@ import { ExtraProperties } from '../../../models/extra-properties';
 })
 export class NodeVisualSankeyDiagramComponent {
   @Input('nodeVisualSankeyDiagram') node: Node<ExtraProperties, ExtraProperties>;
-
-  getColor(node) {
-    return '#000';
-  }
 }

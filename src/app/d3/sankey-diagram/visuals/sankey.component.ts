@@ -3,9 +3,7 @@ import * as d3 from 'd3';
 import * as d3Sankey from 'd3-sankey';
 import { Data } from '../models/data';
 import { D3Service } from '../../d3.service';
-import { ForceDirectedGraph } from '../../force-directed-graph/models';
 import { SankeyDiagram } from '../models/sankey-diagram';
-import { ExtraProperties, Link, Node } from '../models';
 
 @Component({
   selector: 'd3-sankey-diagram',

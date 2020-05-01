@@ -3,11 +3,11 @@
   [attr.y]="node.y0"
   [attr.height]="(node.y1 - node.y0)"
   [attr.width]="node.x1 - node.x0"
-  [attr.fill]="'#1f77b4'"
-  [attr.stroke]="getColor(this)"></svg:rect>
-<!--<svg:text
+  [attr.fill]="'#000'"
+  [attr.stroke]="'#000'"></svg:rect>
+<svg:text
   [attr.x]="node.x0 - 6"
   [attr.y]="(node.y0 + node.y1) / 2"
   [attr.dy]="'0.35em'"
-  [attr.text-anchor]="'start'">node0</svg:text>-->
+  [attr.text-anchor]="'end'">{{ node.name }}</svg:text>
 <title>node0 - some description0 4 TWh</title>

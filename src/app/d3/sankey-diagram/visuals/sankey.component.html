@@ -4,23 +4,7 @@
   <g class="nodes" font-family="sans-serif" font-size="10">
     <g [nodeVisualSankeyDiagram]="node" *ngFor="let node of sankeyNodes"></g>
   </g>
-
-  <!--<g>
-        <rect x="1" y="1" height="466.0000000000001" width="15" fill="#1f77b4" stroke="#000"></rect>
-        <text x="22" y="234.00000000000006" dy="0.35em" text-anchor="start">node0</text>
-        <title>node0 - some description0 4 TWh</title>
-
-      </g>
-      <g>
-        <rect x="1" y="476.99999999999994" height="466.00000000000006" width="15" fill="#ff7f0e" stroke="#000"></rect>
-        <text x="22" y="710" dy="0.35em" text-anchor="start">node1</text>
-        <title>node1 - some description1 4 TWh</title>
-      </g>
-      <g>
-        <rect x="445.6666666666667" y="238.84567786262554" height="465.9999999999999" width="15" fill="#2ca02c" stroke="#000"></rect>
-        <text x="466.6666666666667" y="471.84567786262545" dy="0.35em" text-anchor="start">node2</text>
-        <title>node2 - some description2 4 TWh</title>
-      </g>-->
-
-  <!--<g [nodeVisualSankeyDiagram]="node" *ngFor="let node of nodes"></g>-->
+  <g class="links" fill="none" stroke="#000" stroke-opacity="0.2">
+    <g [linkVisualSankeyDiagram]="link" *ngFor="let link of links"></g>
+  </g>
 </svg>
