@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Node, Link, ForceDirectedGraph } from './force-directed-graph/models';
 import * as d3 from 'd3';
+import * as d3Sankey from 'd3-sankey';
 
 @Injectable({
   providedIn: 'root'
