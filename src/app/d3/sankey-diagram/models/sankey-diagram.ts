@@ -3,11 +3,9 @@ import * as d3Sankey from 'd3-sankey';
 import { Node } from './node';
 import { Link } from './link';
 import { ExtraProperties } from './extra-properties';
-import { Data } from './data';
 
 
 export class SankeyDiagram {
-  //public ticker: EventEmitter<d3.Simulation<Node, Link>> = new EventEmitter();
   public sankey: d3Sankey.SankeyLayout<any, any, any>;
 
   public nodes: Node<ExtraProperties, ExtraProperties>[] = [];
@@ -18,31 +16,43 @@ export class SankeyDiagram {
     this.links = links;
   }
 
+  initNodes() {
+    if (!this.sankey) {
+      throw new Error('Simulation has not yet been initialized.');
+    }
+
+    this.sankey.nodes(this.nodes);
+  }
+
+  initLinks() {
+    if (!this.sankey) {
+      throw new Error('Simulation has not yet been initialized.');
+    }
+
+    this.sankey.links(this.links);
+  }
+
   initSankey(options) {
     if (!options || !options.width || !options.height) {
-      throw new Error('missing options when initializing simulation');
+      throw new Error('Missing options when initializing simulation');
     }
 
-    if (!this.sankey) {
-      //const ticker = this.ticker;
+    this.sankey = d3Sankey.sankey()
+      .nodeWidth(36)
+      .nodePadding(290)
+      .extent([[1, 1], [options.width - 1, options.height - 6]]);
 
-      this.sankey = d3Sankey.sankey()
-        .nodeWidth(36)
-        .nodePadding(290)
-        .extent([[1, 1], [options.width - 1, options.height - 6]]);
+    this.initNodes();
+    this.initLinks();
 
-      // Connecting the d3 ticker to an angular event emitter
-      //this.simulation.on('tick', function() {
-      //  ticker.emit(this);
-      //});
+    // @ts-ignore
+    this.sankey();
 
-      const data: Data = {
-        nodes: this.nodes,
-        links: this.links
-      };
+  }
 
-      this.sankey(data);
-    }
+  updateSankey(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[]) {
+    this.nodes = nodes;
+    this.links = links;
   }
 
 }

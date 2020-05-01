@@ -4,6 +4,8 @@ import * as d3Sankey from 'd3-sankey';
 import { Data } from '../models/data';
 import { D3Service } from '../../d3.service';
 import { SankeyDiagram } from '../models/sankey-diagram';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'd3-sankey-diagram',
@@ -18,20 +20,29 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
   sankeyNodes = [];
   sankeyLinks = [];
 
-  private _options: { width, height } = { width: 800, height: 600 };
+  private _options: { width, height } = {width: 800, height: 600};
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.sankeyDiagram.initSankey(this.options);
+  constructor(private d3Service: D3Service) {
+    /**
+     * Allow for the Sankey diagram to be redrawn when the user resize the window
+     */
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(150))
+      .subscribe(() => {
+        this.sankeyDiagram.initSankey(this.options);
+      });
   }
-
-  constructor(private d3Service: D3Service, private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
     /** Receiving an initialized simulated graph from our custom d3 service */
     this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links, this.options);
+
+    /**
+     * Setting the generated sankey nodes and links up for rendering
+     */
     this.sankeyNodes = this.sankeyDiagram.nodes;
     this.sankeyLinks = this.sankeyDiagram.links;
+
     /** Binding change detection check on each tick
      * This along with an onPush change detection strategy should enforce checking only when relevant!
      * This improves scripting computation duration in a couple of tests I've made, consistently.
