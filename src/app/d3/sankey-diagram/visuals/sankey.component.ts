@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as d3Sankey from 'd3-sankey';
 import { Data } from '../models/data';
@@ -9,7 +9,9 @@ import { Data } from '../models/data';
   styleUrls: ['./sankey.component.scss']
 })
 export class SankeyDiagramComponent implements OnInit, AfterViewInit {
-  private _options: { width, height } = {width: window.innerWidth - 350, height: window.innerHeight - 350};
+  @Input('nodes') nodes;
+  @Input('links') links;
+  private _options: { width, height } = {width: 500, height: 500};
 
   constructor() {
   }
@@ -23,7 +25,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
 
   private DrawChart() {
 
-    let svg = d3.select('#sankey'),
+    let svg = d3.select('#sankeyDiagram'),
       width = +svg.attr('width'),
       height = +svg.attr('height');
 
