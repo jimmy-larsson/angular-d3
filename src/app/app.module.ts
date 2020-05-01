@@ -8,7 +8,7 @@ import { LinkVisualComponent } from './d3/force-directed-graph/visuals/shared/li
 import { ZoomableDirective } from './d3/force-directed-graph/directives/zoomable.directive';
 import { D3Service } from './d3/d3.service';
 import { DraggableDirective } from './d3/force-directed-graph/directives/draggable.directive';
-import { SankeyDiagramComponent } from './d3/sankey/visuals/sankey.component';
+import { SankeyDiagramComponent } from './d3/sankey-diagram/visuals/sankey.component';
 
 @NgModule({
   declarations: [
