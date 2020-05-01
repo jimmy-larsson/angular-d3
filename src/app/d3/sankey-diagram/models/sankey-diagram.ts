@@ -47,7 +47,6 @@ export class SankeyDiagram {
 
     // @ts-ignore
     this.sankey();
-
   }
 
   updateSankey(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[]) {

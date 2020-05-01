@@ -11,4 +11,5 @@ import * as d3 from 'd3';
 })
 export class NodeVisualSankeyDiagramComponent {
   @Input('nodeVisualSankeyDiagram') node: Node<ExtraProperties, ExtraProperties>;
+  @Input('fillColor') fillColor = '#000';
 }

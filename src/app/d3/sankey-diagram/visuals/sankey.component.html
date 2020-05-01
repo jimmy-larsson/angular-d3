@@ -2,7 +2,7 @@
 </svg>
 <svg id="sankeyDiagram" #sankeyDiagram [attr.width]="_options.width" [attr.height]="_options.height">
   <g class="nodes" font-family="sans-serif" font-size="10">
-    <g [nodeVisualSankeyDiagram]="node" *ngFor="let node of sankeyNodes"></g>
+    <g [nodeVisualSankeyDiagram]="node" [fillColor]="colorScheme(node.nodeId+1)" *ngFor="let node, let i of sankeyNodes"></g>
   </g>
   <g class="links" fill="none" stroke="#000" stroke-opacity="0.2">
     <g [linkVisualSankeyDiagram]="link" *ngFor="let link of links"></g>

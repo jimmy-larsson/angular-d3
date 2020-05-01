@@ -21,6 +21,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
   sankeyLinks = [];
 
   private _options: { width, height } = {width: 800, height: 600};
+  private colorScheme; // TODO: Move the color scheme into options
 
   constructor(private d3Service: D3Service) {
     /**
@@ -36,6 +37,11 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     /** Receiving an initialized simulated graph from our custom d3 service */
     this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links, this.options);
+
+    /**
+     * Setting the color scheme
+     */
+    this.colorScheme = d3.scaleSequential(d3.interpolateBlues).domain([0, this.nodes.length]);
 
     /**
      * Setting the generated sankey nodes and links up for rendering
