@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Node, Link, ForceDirectedGraph } from './force-directed-graph/models';
+import { ForceDirectedGraph, Link as ForceDirectedGraphLink, Node as ForceDirectedGraphNode } from './force-directed-graph/models';
+import { ExtraProperties, Link as SankeyDiagramLink, Node as SankeyDiagramNode, SankeyDiagram } from './sankey-diagram/models';
 import * as d3 from 'd3';
-import * as d3Sankey from 'd3-sankey';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class D3Service {
     zoomed = () => {
       const transform = d3.event.transform;
       container.attr('transform', 'translate(' + transform.x + ',' + transform.y + ') scale(' + transform.k + ')');
-    }
+    };
 
     zoom = d3.zoom().on('zoom', zoomed);
     svg.call(zoom);
@@ -38,7 +38,7 @@ export class D3Service {
   /**
    * A method used to bind a draggable behaviour to an svg element.
    */
-  applyDraggableBehaviour(element, node: Node, graph: ForceDirectedGraph) {
+  applyDraggableBehaviour(element, node: ForceDirectedGraphNode, graph: ForceDirectedGraph) {
     const d3element = d3.select(element);
 
     function started() {
@@ -70,9 +70,15 @@ export class D3Service {
       .on('start', started));
   }
 
-  getForceDirectedGraph(nodes: Node[], links: Link[], options: { width: number, height: number }) {
+  getForceDirectedGraph(nodes: ForceDirectedGraphNode[], links: ForceDirectedGraphLink[], options: { width: number, height: number }) {
     const graph = new ForceDirectedGraph(nodes, links, options);
     return graph;
+  }
+
+  getSankeyDiagram(nodes: SankeyDiagramNode<ExtraProperties, ExtraProperties>[], links: SankeyDiagramLink<ExtraProperties, ExtraProperties>[], options: { width: number, height: number }) {
+    const diagram = new SankeyDiagram(nodes, links);
+    diagram.initSankey(options);
+    return diagram;
   }
 
 }

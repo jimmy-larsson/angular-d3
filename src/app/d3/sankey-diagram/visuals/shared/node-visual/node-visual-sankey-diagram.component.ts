@@ -10,4 +10,8 @@ import { ExtraProperties } from '../../../models/extra-properties';
 })
 export class NodeVisualSankeyDiagramComponent {
   @Input('nodeVisualSankeyDiagram') node: Node<ExtraProperties, ExtraProperties>;
+
+  getColor(node) {
+    return '#000';
+  }
 }

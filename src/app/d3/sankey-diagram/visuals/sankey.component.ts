@@ -1,7 +1,11 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostListener, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as d3Sankey from 'd3-sankey';
 import { Data } from '../models/data';
+import { D3Service } from '../../d3.service';
+import { ForceDirectedGraph } from '../../force-directed-graph/models';
+import { SankeyDiagram } from '../models/sankey-diagram';
+import { ExtraProperties, Link, Node } from '../models';
 
 @Component({
   selector: 'd3-sankey-diagram',
@@ -11,21 +15,49 @@ import { Data } from '../models/data';
 export class SankeyDiagramComponent implements OnInit, AfterViewInit {
   @Input('nodes') nodes;
   @Input('links') links;
-  private _options: { width, height } = {width: 500, height: 500};
 
-  constructor() {
+  sankeyDiagram: SankeyDiagram;
+  sankeyNodes = [];
+  sankeyLinks = [];
+
+  private _options: { width, height } = { width: 800, height: 600 };
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.sankeyDiagram.initSankey(this.options);
   }
 
-  ngOnInit(): void {
+  constructor(private d3Service: D3Service, private ref: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    /** Receiving an initialized simulated graph from our custom d3 service */
+    this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links, this.options);
+    this.sankeyNodes = this.sankeyDiagram.nodes;
+    this.sankeyLinks = this.sankeyDiagram.links;
+    /** Binding change detection check on each tick
+     * This along with an onPush change detection strategy should enforce checking only when relevant!
+     * This improves scripting computation duration in a couple of tests I've made, consistently.
+     * Also, it makes sense to avoid unnecessary checks when we are dealing only with simulations data binding.
+     */
+    /*this.sankeyDiagram.ticker.subscribe((d) => {
+      this.ref.markForCheck();
+    });*/
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit() {
     this.DrawChart();
+  }
+
+  get options() {
+    return this._options = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
   }
 
   private DrawChart() {
 
-    let svg = d3.select('#sankeyDiagram'),
+    let svg = d3.select('#sankeyDiagramOld'),
       width = +svg.attr('width'),
       height = +svg.attr('height');
 

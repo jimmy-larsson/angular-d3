@@ -3,6 +3,7 @@ import * as d3Sankey from 'd3-sankey';
 import { Node } from './node';
 import { Link } from './link';
 import { ExtraProperties } from './extra-properties';
+import { Data } from './data';
 
 
 export class SankeyDiagram {
@@ -12,27 +13,9 @@ export class SankeyDiagram {
   public nodes: Node<ExtraProperties, ExtraProperties>[] = [];
   public links: Link<ExtraProperties, ExtraProperties>[] = [];
 
-  constructor(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[], options: { width: number, height: number }) {
+  constructor(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[]) {
     this.nodes = nodes;
     this.links = links;
-
-    this.initSankey(options);
-  }
-
-  initNodes() {
-    if (!this.sankey) {
-      throw new Error('Simulation has not yet been initialized.');
-    }
-
-    this.sankey.nodes(this.nodes);
-  }
-
-  initLinks() {
-    if (!this.sankey) {
-      throw new Error('Simulation has not yet been initialized.');
-    }
-
-    this.sankey.links(this.links);
   }
 
   initSankey(options) {
@@ -46,15 +29,19 @@ export class SankeyDiagram {
       this.sankey = d3Sankey.sankey()
         .nodeWidth(36)
         .nodePadding(290)
-        .size([400, 400]);
+        .extent([[1, 1], [options.width - 1, options.height - 6]]);
 
       // Connecting the d3 ticker to an angular event emitter
       //this.simulation.on('tick', function() {
       //  ticker.emit(this);
       //});
 
-      this.initNodes();
-      this.initLinks();
+      const data: Data = {
+        nodes: this.nodes,
+        links: this.links
+      };
+
+      this.sankey(data);
     }
   }
 
