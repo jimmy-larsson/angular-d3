@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ForceDirectedGraph, Link as ForceDirectedGraphLink, Node as ForceDirectedGraphNode } from './force-directed-graph/models';
-import { ExtraProperties, Link as SankeyDiagramLink, Node as SankeyDiagramNode, SankeyDiagram } from './sankey-diagram/models';
+import {
+  ExtraProperties,
+  Link as SankeyDiagramLink,
+  Node as SankeyDiagramNode,
+  NodeAlignment,
+  SankeyDiagram
+} from './sankey-diagram/models';
 import * as d3 from 'd3';
 
 @Injectable({
@@ -76,8 +82,8 @@ export class D3Service {
   }
 
   getSankeyDiagram(nodes: SankeyDiagramNode<ExtraProperties, ExtraProperties>[], links: SankeyDiagramLink<ExtraProperties, ExtraProperties>[], options: { width: number, height: number }) {
-    const diagram = new SankeyDiagram(nodes, links);
-    diagram.initSankey(options);
+    const diagram = new SankeyDiagram(nodes, links, { } );
+    diagram.initSankey();
     return diagram;
   }
 

@@ -4,6 +4,7 @@ import { Data } from './data';
 import { ExtraProperties } from './extra-properties';
 
 import * as d3Sankey from 'd3-sankey';
+import { NodeAlignment, Options } from './options';
 
 
 export class SankeyDiagram {
@@ -12,9 +13,27 @@ export class SankeyDiagram {
   public nodes: Node<ExtraProperties, ExtraProperties>[] = [];
   public links: Link<ExtraProperties, ExtraProperties>[] = [];
 
-  constructor(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[]) {
+  public options: Options;
+
+  constructor(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[], options?: Options) {
+    this.setOption(options);
     this.nodes = nodes;
-    links[0].this.links = links;
+    this.links = links;
+  }
+
+  private setOption(options) {
+    if (options != null) {
+      this.options = new Options(
+        options.nodeAlign,
+        options.nodeWidth,
+        options.nodePadding,
+        options.layoutExtent,
+        options.layoutIterations,
+        options.layoutWidth,
+        options.layoutHeight);
+    } else {
+      this.options = new Options();
+    }
   }
 
   initNodes() {
@@ -33,17 +52,31 @@ export class SankeyDiagram {
     this.sankey.links(this.links);
   }
 
-  initSankey(options) {
-    if (!options || !options.width || !options.height) {
-      throw new Error('Missing options when initializing simulation');
-    }
+  initSankey(options?) {
+    this.setOption(options);
 
     this.sankey = d3Sankey.sankey()
-      .nodeWidth(36)
-      .nodePadding(25)
-      .nodeAlign(d3Sankey.sankeyJustify)
-      .iterations(6)
-      .extent([[1, 1], [options.width - 1, options.height - 6]]);
+      .nodeWidth(this.options.getNodeWidth())
+      .nodePadding(this.options.getNodePadding())
+      .iterations(this.options.getLayoutIterations())
+      .extent(this.options.getLayoutExtent());
+
+    switch (this.options.getNodeAlign()) {
+      case NodeAlignment.LEFT:
+        this.sankey.nodeAlign(d3Sankey.sankeyLeft);
+        break;
+      case NodeAlignment.CENTER:
+        this.sankey.nodeAlign(d3Sankey.sankeyCenter);
+        break;
+      case NodeAlignment.RIGHT:
+        this.sankey.nodeAlign(d3Sankey.sankeyRight);
+        break;
+      case NodeAlignment.JUSTIFY:
+        this.sankey.nodeAlign(d3Sankey.sankeyJustify);
+        break;
+      default:
+        this.sankey.nodeAlign(d3Sankey.sankeyJustify); // JUSTIFY has its own case in case other sort orders are added in the future.
+    }
 
     this.initNodes();
     this.initLinks();
