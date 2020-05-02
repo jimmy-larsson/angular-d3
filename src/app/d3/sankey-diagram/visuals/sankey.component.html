@@ -1,6 +1,4 @@
-<svg id="sankeyDiagramOld" [attr.width]="_options.width" [attr.height]="_options.height">
-</svg>
-<svg id="sankeyDiagram" #sankeyDiagram [attr.width]="_options.width" [attr.height]="_options.height">
+<svg id="sankeyDiagram" [attr.width]="_options.width" [attr.height]="_options.height">
   <g class="links">
     <g [linkVisualSankeyDiagram]="link" [colorGenerator]="colorScheme" *ngFor="let link of links"></g>
   </g>

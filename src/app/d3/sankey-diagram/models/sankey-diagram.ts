@@ -40,6 +40,8 @@ export class SankeyDiagram {
     this.sankey = d3Sankey.sankey()
       .nodeWidth(36)
       .nodePadding(25)
+      .nodeAlign(d3Sankey.sankeyJustify)
+      .iterations(6)
       .extent([[1, 1], [options.width - 1, options.height - 6]]);
 
     this.initNodes();
