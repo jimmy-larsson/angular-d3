@@ -1,9 +1,9 @@
 import { Node } from './node';
 import { Link } from './link';
+import { Data } from './data';
 import { ExtraProperties } from './extra-properties';
 
 import * as d3Sankey from 'd3-sankey';
-import { Data } from './data';
 
 
 export class SankeyDiagram {
