@@ -4,7 +4,7 @@ import {
   ExtraProperties,
   Link as SankeyDiagramLink,
   Node as SankeyDiagramNode,
-  NodeAlignment,
+  NodeAlignment, Options,
   SankeyDiagram
 } from './sankey-diagram/models';
 import * as d3 from 'd3';
@@ -81,8 +81,8 @@ export class D3Service {
     return graph;
   }
 
-  getSankeyDiagram(nodes: SankeyDiagramNode<ExtraProperties, ExtraProperties>[], links: SankeyDiagramLink<ExtraProperties, ExtraProperties>[], options: { width: number, height: number }) {
-    const diagram = new SankeyDiagram(nodes, links, { } );
+  getSankeyDiagram(nodes: SankeyDiagramNode<ExtraProperties, ExtraProperties>[], links: SankeyDiagramLink<ExtraProperties, ExtraProperties>[], options?: Options) {
+    const diagram = new SankeyDiagram(nodes, links, options );
     diagram.initSankey();
     return diagram;
   }

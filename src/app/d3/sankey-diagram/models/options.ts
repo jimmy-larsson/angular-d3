@@ -3,17 +3,6 @@
  */
 export class Options {
 
-
-  constructor(nodeAlign?: NodeAlignment, nodeWidth?: number, nodePadding?: number, layoutExtent?: [[number, number], [number, number]], layoutIterations?: number, layoutWidth?: number, layoutHeight?: number) {
-    this.nodeAlign = nodeAlign;
-    this.nodeWidth = nodeWidth;
-    this.nodePadding = nodePadding;
-    this.layoutExtent = layoutExtent;
-    this.layoutIterations = layoutIterations;
-    this.layoutWidth = layoutWidth;
-    this.layoutHeight = layoutHeight;
-  }
-
   /**
    * Specify how the nodes should be aligned. Defaults to JUSTIFY.
    */
@@ -51,6 +40,17 @@ export class Options {
    */
   layoutHeight?: number;
 
+  /**
+   *
+   */
+  diagramColoringMethod?: ColoringMethod;
+
+  /**
+   *
+   */
+  diagramColorSchemeOrInterpolation?: ColorSchemeInterpolation;
+
+
   getNodeAlign?(): NodeAlignment {
     return this.nodeAlign != null ? this.nodeAlign : NodeAlignment.JUSTIFY;
   }
@@ -78,11 +78,72 @@ export class Options {
   getLayoutHeight?(): number {
     return this.layoutHeight != null ? this.layoutHeight : window.innerHeight;
   }
+
+  getDiagramColoringMethod?(): ColoringMethod {
+    return this.diagramColoringMethod != null ? this.diagramColoringMethod : ColoringMethod.SEQUENTIAL;
+  }
+
+  getDiagramColorSchemeOrInterpolation?(): ColorSchemeInterpolation {
+    return this.diagramColorSchemeOrInterpolation != null ?
+      this.diagramColorSchemeOrInterpolation : ColorSchemeInterpolation.INTERPOLATE_RAINBOW;
+  }
 }
 
 export enum NodeAlignment {
   LEFT,
   CENTER,
   RIGHT,
-  JUSTIFY
+  JUSTIFY,
+}
+
+export enum ColoringMethod {
+  SEQUENTIAL,
+  DIVERGING,
+  ORDINAL,
+}
+
+export enum ColorSchemeInterpolation {
+  SCHEME_CATEGORY_10,
+  SCHEME_ACCENT,
+  SCHEME_DARK2,
+  SCHEME_PAIRED,
+  SCHEME_PASTEL1,
+  SCHEME_PASTEL2,
+  SCHEME_SET1,
+  SCHEME_SET2,
+  SCHEME_SET3,
+  INTERPOLATE_PRGN,
+  INTERPOLATE_PIYG,
+  INTERPOLATE_PUOR,
+  INTERPOLATE_RDGY,
+  INTERPOLATE_RDYLBU,
+  INTERPOLATE_RDYLGN,
+  INTERPOLATE_SPECTRAL,
+  INTERPOLATE_BLUES,
+  INTERPOLATE_GREENS,
+  INTERPOLATE_GREYS,
+  INTERPOLATE_ORANGES,
+  INTERPOLATE_PURPLES,
+  INTERPOLATE_REDS,
+  INTERPOLATE_VIRIDIS,
+  INTERPOLATE_INFERNO,
+  INTERPOLATE_MAGMA,
+  INTERPOLATE_PLASMA,
+  INTERPOLATE_WARM,
+  INTERPOLATE_COOL,
+  INTERPOLATE_CUBE_HELIX_DEFAULT,
+  INTERPOLATE_BUGN,
+  INTERPOLATE_BUPU,
+  INTERPOLATE_GNBU,
+  INTERPOLATE_ORRD,
+  INTERPOLATE_PUBUGN,
+  INTERPOLATE_PUBU,
+  INTERPOLATE_PURD,
+  INTERPOLATE_RDPU,
+  INTERPOLATE_YLGNBU,
+  INTERPOLATE_YLGN,
+  INTERPOLATE_YLORBR,
+  INTERPOLATE_YLORRD,
+  INTERPOLATE_RAINBOW,
+  INTERPOLATE_SINEBOW
 }

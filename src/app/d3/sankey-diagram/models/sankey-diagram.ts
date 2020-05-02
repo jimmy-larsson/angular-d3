@@ -22,18 +22,22 @@ export class SankeyDiagram {
   }
 
   private setOption(options) {
-    if (options != null) {
-      this.options = new Options(
-        options.nodeAlign,
-        options.nodeWidth,
-        options.nodePadding,
-        options.layoutExtent,
-        options.layoutIterations,
-        options.layoutWidth,
-        options.layoutHeight);
-    } else {
+    if (this.options == null) {
       this.options = new Options();
     }
+    if (options == null) {
+      return;
+    }
+
+    this.options.nodeAlign = options.nodeAlign != null ? options.nodeAlign : this.options.getNodeAlign();
+    this.options.nodeWidth = options.nodeWidth != null ? options.nodeWidth : this.options.getNodeWidth();
+    this.options.nodePadding = options.nodePadding != null ? options.nodePadding : this.options.getNodePadding();
+    this.options.layoutExtent = options.layoutExtent != null ? options.layoutExtent : this.options.getLayoutExtent();
+    this.options.layoutIterations = options.layoutIterations != null ? options.layoutIterations : this.options.getLayoutIterations();
+    this.options.layoutWidth = options.layoutWidth != null ? options.layoutWidth : this.options.getLayoutWidth();
+    this.options.layoutHeight = options.layoutHeight != null ? options.layoutHeight : this.options.getLayoutHeight();
+    this.options.diagramColoringMethod = options.diagramColoringMethod != null ? options.diagramColoringMethod : this.options.getDiagramColoringMethod();
+    this.options.diagramColorSchemeOrInterpolation = options.diagramColorSchemeOrInterpolation != null ? options.diagramColorSchemeOrInterpolation : this.options.getDiagramColorSchemeOrInterpolation();
   }
 
   initNodes() {
