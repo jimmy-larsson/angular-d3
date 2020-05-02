@@ -4,7 +4,7 @@
   [attr.y]="node.y0"
   [attr.height]="node.y1 - node.y0"
   [attr.width]="node.x1 - node.x0"
-  [attr.fill]="colorGenerator(node.nodeId)"
+  [attr.fill]="colorGenerator(node.index)"
   [attr.stroke]="'#000'"></svg:rect>
 <svg:text
   class="node-name"

@@ -2,9 +2,9 @@
   <defs>
     <linearGradient [id]="generateLinkId()">
       <stop offset="0.1"
-            [attr.stop-color]="colorGenerator(link.source.nodeId)"/>
+            [attr.stop-color]="colorGenerator(link.source.index)"/>
       <stop offset="0.9"
-            [attr.stop-color]="colorGenerator(link.target.nodeId)"/>
+            [attr.stop-color]="colorGenerator(link.target.index)"/>
     </linearGradient>
   </defs>
 </svg>
