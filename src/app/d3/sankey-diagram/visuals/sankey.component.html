@@ -1,8 +1,8 @@
 <svg id="sankeyDiagram" [attr.width]="sankeyDiagram.options.getLayoutWidth()" [attr.height]="sankeyDiagram.options.getLayoutHeight()">
   <g class="links">
-    <g [linkVisualSankeyDiagram]="link" [colorGenerator]="colorScheme" *ngFor="let link of links"></g>
+    <g [linkVisualSankeyDiagram]="link" [colorGenerator]="colorGenerator" *ngFor="let link of links"></g>
   </g>
   <g class="nodes">
-    <g [nodeVisualSankeyDiagram]="node" [colorGenerator]="colorScheme" *ngFor="let node of sankeyNodes"></g>
+    <g [nodeVisualSankeyDiagram]="node" [colorGenerator]="colorGenerator" *ngFor="let node of sankeyNodes"></g>
   </g>
 </svg>

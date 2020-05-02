@@ -41,12 +41,22 @@ export class Options {
   layoutHeight?: number;
 
   /**
+   * Specify which coloring method to use for the Sankey diagram.
    *
+   * NOTE: The Ordinal coloring method requires a SCHEME in the diagramColorSchemeOrInterpolation variable (prefixed SCHEME_ while
+   * the Sequential and the Diverging methods require an INTERPOLATOR (prefixed INTERPOLATE_)
+   *
+   * Defaults to SEQUENTIAL
    */
   diagramColoringMethod?: ColoringMethod;
 
   /**
+   * Specify which scheme or interpolator that should be used.
    *
+   * NOTE: Schemes works best with the diagramColoringMethod set to Ordinal while interpolator works better with the diagramColoringMethod
+   * set to Sequential or Diverging.
+   *
+   * Defaults to INTERPOLATE_RAINBOW.
    */
   diagramColorSchemeOrInterpolation?: ColorSchemeInterpolation;
 
