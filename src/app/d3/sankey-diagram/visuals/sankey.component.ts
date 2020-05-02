@@ -41,10 +41,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     /** Receiving an initialized simulated graph from our custom d3 service */
-    this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links, {
-      diagramColoringMethod: ColoringMethod.ORDINAL,
-      diagramColorSchemeOrInterpolation: ColorSchemeInterpolation.SCHEME_SET2
-    });
+    this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links);
 
     /**
      * Setting the color scheme
