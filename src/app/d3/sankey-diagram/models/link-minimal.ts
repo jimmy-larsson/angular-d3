@@ -1,6 +1,7 @@
-import * as d3Sankey from 'd3-sankey';
 import { Node } from './node';
 import { ExtraProperties } from './extra-properties';
+
+import * as d3Sankey from 'd3-sankey';
 
 export class LinkMinimal implements d3Sankey.SankeyLinkMinimal<ExtraProperties, ExtraProperties> {
   // Optional - defining optional implementation properties - required for relevant typing assistance

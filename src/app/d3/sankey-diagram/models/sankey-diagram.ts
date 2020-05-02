@@ -1,8 +1,9 @@
-import * as d3Sankey from 'd3-sankey';
-
 import { Node } from './node';
 import { Link } from './link';
 import { ExtraProperties } from './extra-properties';
+
+import * as d3Sankey from 'd3-sankey';
+import { Data } from './data';
 
 
 export class SankeyDiagram {
@@ -13,7 +14,7 @@ export class SankeyDiagram {
 
   constructor(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[]) {
     this.nodes = nodes;
-    this.links = links;
+    links[0].this.links = links;
   }
 
   initNodes() {
@@ -54,6 +55,13 @@ export class SankeyDiagram {
   updateSankey(nodes: Node<ExtraProperties, ExtraProperties>[], links: Link<ExtraProperties, ExtraProperties>[]) {
     this.nodes = nodes;
     this.links = links;
+
+    const data: Data = {
+      nodes,
+      links
+    };
+
+    this.sankey(data);
   }
 
 }

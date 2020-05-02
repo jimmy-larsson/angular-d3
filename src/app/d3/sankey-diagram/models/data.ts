@@ -1,5 +1,5 @@
-import { Node } from './node';
 import { ExtraProperties } from './extra-properties';
+import { Node } from './node';
 import { Link } from './link';
 
 export interface Data {

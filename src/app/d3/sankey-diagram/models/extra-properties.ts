@@ -1,3 +1,3 @@
 export interface ExtraProperties {
-  [key: string]: any;
+  [ key: string ]: any;
 }
