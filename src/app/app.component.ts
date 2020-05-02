@@ -44,7 +44,7 @@ export class AppComponent {
         /** connecting the forceDirectedNodes before starting the simulation */
         const link = new ForceDirectedLink(i, i * m);
         link.strokeWidth = '3px';
-        link. strokeColor = 'gray';
+        link.strokeColor = 'gray';
         this.forceDirectedLinks.push(link);
       }
     }
@@ -62,7 +62,7 @@ export class AppComponent {
         description: 'some description1'
       }, {
         nodeId: 2,
-        name: 'Income',
+        name: 'Monthly budget',
         description: 'some description2'
       }, {
         nodeId: 3,
@@ -74,39 +74,246 @@ export class AppComponent {
         description: 'some description4'
       }, {
         nodeId: 5,
-        name: 'Investments',
+        name: 'Water',
+        description: 'some description4'
+      }, {
+        nodeId: 6,
+        name: 'Gas',
+        description: 'some description4'
+      }, {
+        nodeId: 7,
+        name: 'Internet',
         description: 'some description4'
       }],
       links: [{
         source: 0,
         target: 2,
-        value: 800,
+        value: 450000,
         uom: 'Widget(s)'
       }, {
         source: 1,
         target: 2,
-        value: 200,
+        value: 1000,
         uom: 'Widget(s)'
       }, {
         source: 2,
         target: 3,
-        value: 750,
+        value: 86500,
         uom: 'Widget(s)'
       }, {
         source: 3,
         target: 4,
-        value: 750,
+        value: 5500,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 5,
+        value: 5000,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 6,
+        value: 3500,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 7,
+        value: 5200,
+        uom: 'Widget(s)'
+      }
+      ]
+    };
+    const sankeyDataBig: Data = {
+      nodes: [{
+        nodeId: 0,
+        name: 'Work income',
+        description: 'some description0'
+      }, {
+        nodeId: 1,
+        name: 'Stock dividends',
+        description: 'some description1'
+      }, {
+        nodeId: 2,
+        name: 'Monthly budget',
+        description: 'some description2'
+      }, {
+        nodeId: 3,
+        name: 'Bills',
+        description: 'some description3'
+      }, {
+        nodeId: 4,
+        name: 'Electricity',
+        description: 'some description4'
+      }, {
+        nodeId: 5,
+        name: 'Water',
+        description: 'some description4'
+      }, {
+        nodeId: 6,
+        name: 'Gas',
+        description: 'some description4'
+      }, {
+        nodeId: 7,
+        name: 'Internet',
+        description: 'some description4'
+      }, {
+        nodeId: 8,
+        name: 'Telephone',
+        description: 'some description4'
+      }, {
+        nodeId: 9,
+        name: 'Hobbies',
+        description: 'some description4'
+      }, {
+        nodeId: 10,
+        name: 'Food',
+        description: 'some description4'
+      }, {
+        nodeId: 11,
+        name: 'Games',
+        description: 'some description4'
+      }, {
+        nodeId: 12,
+        name: 'Clothes',
+        description: 'some description4'
+      }, {
+        nodeId: 13,
+        name: 'Apps',
+        description: 'some description4'
+      }, {
+        nodeId: 14,
+        name: 'Monthly subscriptions',
+        description: 'some description4'
+      }, {
+        nodeId: 15,
+        name: 'Netflix',
+        description: 'some description4'
+      }, {
+        nodeId: 16,
+        name: 'Amazon Prime',
+        description: 'some description4'
+      }, {
+        nodeId: 17,
+        name: 'Other',
+        description: 'some description4'
+      }, {
+        nodeId: 18,
+        name: 'Credit card fees',
+        description: 'some description4'
+      }, {
+        nodeId: 19,
+        name: 'Investments',
+        description: 'some description4'
+      }, {
+        nodeId: 20,
+        name: 'Rent',
+        description: 'some description4'
+      }],
+      links: [{
+        source: 0,
+        target: 2,
+        value: 450000,
+        uom: 'Widget(s)'
+      }, {
+        source: 1,
+        target: 2,
+        value: 1000,
         uom: 'Widget(s)'
       }, {
         source: 2,
+        target: 3,
+        value: 86500,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 4,
+        value: 5500,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
         target: 5,
-        value: 250,
+        value: 5000,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 6,
+        value: 3500,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 7,
+        value: 5200,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 8,
+        value: 1100,
+        uom: 'Widget(s)'
+      }, {
+        source: 2,
+        target: 9,
+        value: 40000,
+        uom: 'Widget(s)'
+      }, {
+        source: 2,
+        target: 10,
+        value: 44000,
+        uom: 'Widget(s)'
+      }, {
+        source: 9,
+        target: 11,
+        value: 25000,
+        uom: 'Widget(s)'
+      }, {
+        source: 2,
+        target: 12,
+        value: 15000,
+        uom: 'Widget(s)'
+      }, {
+        source: 9,
+        target: 13,
+        value: 10000,
+        uom: 'Widget(s)'
+      }, {
+        source: 9,
+        target: 14,
+        value: 5000,
+        uom: 'Widget(s)'
+      }, {
+        source: 14,
+        target: 15,
+        value: 1500,
+        uom: 'Widget(s)'
+      }, {
+        source: 14,
+        target: 16,
+        value: 1500,
+        uom: 'Widget(s)'
+      }, {
+        source: 2,
+        target: 17,
+        value: 1000,
+        uom: 'Widget(s)'
+      }, {
+        source: 17,
+        target: 18,
+        value: 1000,
+        uom: 'Widget(s)'
+      }, {
+        source: 2,
+        target: 19,
+        value: 265500,
+        uom: 'Widget(s)'
+      }, {
+        source: 3,
+        target: 20,
+        value: 67300,
         uom: 'Widget(s)'
       }
       ]
     };
 
-    this.sankeyDiagramNodes = sankeyData.nodes;
-    this.sankeyDiagramLinks = sankeyData.links;
+    this.sankeyDiagramNodes = sankeyDataBig.nodes;
+    this.sankeyDiagramLinks = sankeyDataBig.links;
   }
 }
