@@ -2,14 +2,14 @@
   class="node"
   [attr.x]="node.x0"
   [attr.y]="node.y0"
-  [attr.height]="(node.y1 - node.y0)"
+  [attr.height]="node.y1 - node.y0"
   [attr.width]="node.x1 - node.x0"
   [attr.fill]="colorGenerator(node.nodeId)"
   [attr.stroke]="'#000'"></svg:rect>
 <svg:text
   class="node-name"
-  [attr.x]="node.x0 - 6"
+  [attr.x]="textAnchorXPosition()"
   [attr.y]="(node.y0 + node.y1) / 2"
   [attr.dy]="'0.35em'"
-  [attr.text-anchor]="'end'">{{ node.name }}</svg:text>
+  [ngStyle]="{ 'text-anchor' : textAnchorPosition() }">{{ node.name }}</svg:text>
 <title>node0 - some description0 4 TWh</title>

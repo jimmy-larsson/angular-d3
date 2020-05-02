@@ -54,61 +54,56 @@ export class AppComponent {
     const sankeyData: Data = {
       nodes: [{
         nodeId: 0,
-        name: 'node0',
+        name: 'Work income',
         description: 'some description0'
       }, {
         nodeId: 1,
-        name: 'node1',
+        name: 'Stock dividends',
         description: 'some description1'
       }, {
         nodeId: 2,
-        name: 'node2',
+        name: 'Income',
         description: 'some description2'
       }, {
         nodeId: 3,
-        name: 'node3',
+        name: 'Bills',
         description: 'some description3'
       }, {
         nodeId: 4,
-        name: 'node4',
+        name: 'Electricity',
+        description: 'some description4'
+      }, {
+        nodeId: 5,
+        name: 'Investments',
         description: 'some description4'
       }],
       links: [{
         source: 0,
         target: 2,
-        value: 2,
+        value: 800,
         uom: 'Widget(s)'
       }, {
         source: 1,
         target: 2,
-        value: 2,
-        uom: 'Widget(s)'
-      }, {
-        source: 1,
-        target: 3,
-        value: 2,
-        uom: 'Widget(s)'
-      }, {
-        source: 0,
-        target: 4,
-        value: 2,
+        value: 200,
         uom: 'Widget(s)'
       }, {
         source: 2,
         target: 3,
-        value: 2,
-        uom: 'Widget(s)'
-      }, {
-        source: 2,
-        target: 4,
-        value: 2,
+        value: 750,
         uom: 'Widget(s)'
       }, {
         source: 3,
         target: 4,
-        value: 4,
-        uom: 'Widget(s)',
-      }]
+        value: 750,
+        uom: 'Widget(s)'
+      }, {
+        source: 2,
+        target: 5,
+        value: 250,
+        uom: 'Widget(s)'
+      }
+      ]
     };
 
     this.sankeyDiagramNodes = sankeyData.nodes;

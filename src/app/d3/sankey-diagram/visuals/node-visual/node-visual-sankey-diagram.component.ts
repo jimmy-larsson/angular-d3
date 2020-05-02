@@ -11,6 +11,13 @@ import * as d3 from 'd3';
 })
 export class NodeVisualSankeyDiagramComponent {
   @Input('nodeVisualSankeyDiagram') node: Node<ExtraProperties, ExtraProperties>;
-  @Input('fillColor') fillColor = '#000';
   @Input('colorGenerator') colorGenerator;
+
+  textAnchorPosition() {
+    return this.node.x0 < window.innerWidth / 2 ? 'start' : 'end';
+  }
+
+  textAnchorXPosition() {
+    return this.node.x0 < window.innerWidth / 2 ? this.node.x1 + 10 : this.node.x0 - 10;
+  }
 }

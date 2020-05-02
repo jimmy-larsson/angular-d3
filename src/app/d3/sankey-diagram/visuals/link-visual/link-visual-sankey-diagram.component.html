@@ -9,9 +9,20 @@
   </defs>
 </svg>
 <svg:path
+  *ngIf="link.y0 !== link.y1"
   class="link"
   [attr.d]="linkHorizontal()"
   [attr.stroke-width]="getStrokeWidth()"
   [attr.stroke]="'url(#' + generateLinkId() +')'">
-  <title>node0 → node22 TWh</title>
+  <title>{{ link.source.name }} -> {{ link.target.name }} - {{ link.value }}</title>
 </svg:path>
+<svg:rect
+  *ngIf="link.y0 === link.y1"
+  class="link"
+  [attr.x]="link.source.x1"
+  [attr.y]="link.source.y0"
+  [attr.height]="link.target.y1 - link.target.y0"
+  [attr.width]="link.target.x0 - link.source.x1"
+  [attr.fill]="'url(#' + generateLinkId() +')'">
+  <title>{{ link.source.name }} -> {{ link.target.name }} - {{ link.value }}</title>
+</svg:rect>

@@ -1,10 +1,10 @@
 <svg id="sankeyDiagramOld" [attr.width]="_options.width" [attr.height]="_options.height">
 </svg>
 <svg id="sankeyDiagram" #sankeyDiagram [attr.width]="_options.width" [attr.height]="_options.height">
-  <g class="nodes" font-family="sans-serif" font-size="10">
-    <g [nodeVisualSankeyDiagram]="node" [colorGenerator]="colorScheme" *ngFor="let node of sankeyNodes"></g>
-  </g>
   <g class="links">
     <g [linkVisualSankeyDiagram]="link" [colorGenerator]="colorScheme" *ngFor="let link of links"></g>
+  </g>
+  <g class="nodes">
+    <g [nodeVisualSankeyDiagram]="node" [colorGenerator]="colorScheme" *ngFor="let node of sankeyNodes"></g>
   </g>
 </svg>

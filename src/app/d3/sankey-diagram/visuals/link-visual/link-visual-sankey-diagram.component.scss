@@ -1,11 +1,15 @@
-.link {
+path {
   fill: none;
+}
 
+.link {
   cursor: pointer; // TODO: Make configurable
   stroke-opacity: 0.5; // TODO: Make configurable
+  fill-opacity: 0.5; // TODO: Use the same configurable as for stroke-opacity
 
   &:hover {
     stroke-opacity: 0.8; // TODO: Make configurable
+    fill-opacity: 0.8; // TODO: Use the same configurable as for stroke-opacity
   }
 }
 

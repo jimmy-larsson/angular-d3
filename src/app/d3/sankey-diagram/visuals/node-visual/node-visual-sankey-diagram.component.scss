@@ -1,13 +1,14 @@
 .node {
   cursor: pointer;
 
-  stroke: black;
-  stroke-width: 1px;
+  stroke: black; // TODO: Make this configurable
+  stroke-width: 1px; // TODO: Make this configurable
 }
 
 .node-name {
   font-family: 'Lato';
-  text-anchor: middle;
   alignment-baseline: central;
   font-weight: 300;
+  font-size: 2em; // TODO: Make this configurable
+  fill: #000; // TODO: Make this configurable
 }
