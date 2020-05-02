@@ -21,7 +21,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
   sankeyLinks = [];
 
   private _options: { width, height } = {width: 800, height: 600};
-  private colorScheme; // TODO: Move the color scheme into options
+  private colorScheme; // TODO: Move the actual scheme colors into options? Maybe have options such as: { scaleSequential: {interpolateRainbow, ...], scaleOrdinal {...} }? Also allow to pass an interpolator?
 
   constructor(private d3Service: D3Service) {
     /**
@@ -41,7 +41,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
     /**
      * Setting the color scheme
      */
-    this.colorScheme = d3.scaleSequential(d3.interpolateBlues).domain([0, this.nodes.length]);
+    this.colorScheme = d3.scaleSequential(d3.interpolateRainbow).domain([0, this.nodes.length]);
 
     /**
      * Setting the generated sankey nodes and links up for rendering

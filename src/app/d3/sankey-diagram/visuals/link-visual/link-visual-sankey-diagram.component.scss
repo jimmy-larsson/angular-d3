@@ -1,11 +1,12 @@
 .link {
-  cursor: pointer;
-  transition: stroke-width 0.1s ease-out,
-  fill 0.1s ease-out,
-  stroke 0.1s ease-out;
+  fill: none;
 
-  stroke: white;
-  stroke-width: 0.25;
+  cursor: pointer; // TODO: Make configurable
+  stroke-opacity: 0.5; // TODO: Make configurable
+
+  &:hover {
+    stroke-opacity: 0.8; // TODO: Make configurable
+  }
 }
 
 .link-name {

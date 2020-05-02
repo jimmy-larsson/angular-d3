@@ -1,5 +1,17 @@
+<svg>
+  <defs>
+    <linearGradient [id]="generateLinkId()">
+      <stop offset="0.1"
+            [attr.stop-color]="colorGenerator(link.source.nodeId)"/>
+      <stop offset="0.9"
+            [attr.stop-color]="colorGenerator(link.target.nodeId)"/>
+    </linearGradient>
+  </defs>
+</svg>
 <svg:path
+  class="link"
   [attr.d]="linkHorizontal()"
-  [attr.stroke-width]="getStrokeWidth()">
+  [attr.stroke-width]="getStrokeWidth()"
+  [attr.stroke]="'url(#' + generateLinkId() +')'">
   <title>node0 → node22 TWh</title>
 </svg:path>

@@ -1,11 +1,13 @@
 <svg:rect
+  class="node"
   [attr.x]="node.x0"
   [attr.y]="node.y0"
   [attr.height]="(node.y1 - node.y0)"
   [attr.width]="node.x1 - node.x0"
-  [attr.fill]="fillColor"
+  [attr.fill]="colorGenerator(node.nodeId)"
   [attr.stroke]="'#000'"></svg:rect>
 <svg:text
+  class="node-name"
   [attr.x]="node.x0 - 6"
   [attr.y]="(node.y0 + node.y1) / 2"
   [attr.dy]="'0.35em'"
