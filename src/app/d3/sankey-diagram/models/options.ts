@@ -1,3 +1,6 @@
+import { Node } from './node';
+import { ExtraProperties } from './extra-properties';
+
 /**
  * Class used to specify the options which can be passed on to the generator, nodes and links.
  */
@@ -17,6 +20,12 @@ export class Options {
    * Specify the node padding. Defaults to 8px.
    */
   nodePadding?: number;
+
+  /**
+   * Specify a function that generates a unique string or number id to be used instead of the node index,
+   * this allows for nodes to be moved around without breaking the links between them.
+   */
+  nodeId?: (node: Node<ExtraProperties, ExtraProperties>) => string | number;
 
   /**
    * Specify the extent of the Sankey layout. Defaults to [[0, 0], [window.innerWidth - nodeWidth, window.innerHeight]]
@@ -71,6 +80,10 @@ export class Options {
 
   getNodePadding?(): number {
     return this.nodePadding != null ? this.nodePadding : 8;
+  }
+
+  getNodeId?(): (node: Node<ExtraProperties, ExtraProperties>) => string | number {
+    return this.nodeId != null ? this.nodeId : (node: Node<ExtraProperties, ExtraProperties>) => node.index;
   }
 
   getLayoutExtent?(): [[number, number], [number, number]] {

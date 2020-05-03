@@ -4,7 +4,7 @@ import { D3Service } from '../../d3.service';
 import { SankeyDiagram } from '../models/sankey-diagram';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { ColoringMethod, ColorSchemeInterpolation } from '../models';
+import { ColoringMethod, ColorSchemeInterpolation, ExtraProperties, Link, Node, Options } from '../models';
 
 @Component({
   selector: 'd3-sankey-diagram',
@@ -12,8 +12,9 @@ import { ColoringMethod, ColorSchemeInterpolation } from '../models';
   styleUrls: ['./sankey.component.scss']
 })
 export class SankeyDiagramComponent implements OnInit, AfterViewInit {
-  @Input('nodes') nodes;
-  @Input('links') links;
+  @Input('nodes') nodes: Node<ExtraProperties, ExtraProperties>;
+  @Input('links') links: Link<ExtraProperties, ExtraProperties>;
+  @Input('options') options: Options;
 
   sankeyDiagram: SankeyDiagram;
   sankeyNodes = [];
@@ -41,7 +42,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     /** Receiving an initialized simulated graph from our custom d3 service */
-    this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links);
+    this.sankeyDiagram = this.d3Service.getSankeyDiagram(this.nodes, this.links, this.options);
 
     /**
      * Setting the color scheme
@@ -59,7 +60,7 @@ export class SankeyDiagramComponent implements OnInit, AfterViewInit {
 
   }
 
-  setColorScheme() {
+  private setColorScheme() {
     let schemeOrInterpolator;
     let coloringMethod;
 

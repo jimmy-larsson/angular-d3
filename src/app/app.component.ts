@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Link as ForceDirectedLink, Node as ForceDirectedNode } from './d3/force-directed-graph/models';
-import { ExtraProperties, Link as SankeyLink, Node as SankeyNode } from './d3/sankey-diagram/models';
+import { ExtraProperties, Link as SankeyLink, Node as SankeyNode, Options } from './d3/sankey-diagram/models';
 import { Data } from './d3/sankey-diagram/models/data';
 
 @Component({
@@ -16,6 +16,7 @@ export class AppComponent {
 
   sankeyDiagramNodes: SankeyNode<ExtraProperties, ExtraProperties>[] = [];
   sankeyDiagramLinks: SankeyLink<ExtraProperties, ExtraProperties>[] = [];
+  sankeyDiagramOptions: Options;
 
   constructor() {
     this.populateForceDirectedGraphData();
@@ -117,67 +118,88 @@ export class AppComponent {
     };
     const sankeyDataBig: Data = {
       nodes: [{
+        nodeId: 0,
         name: 'Work income',
         description: 'some description0'
       }, {
+        nodeId: 1,
         name: 'Stock dividends',
         description: 'some description1'
       }, {
+        nodeId: 2,
         name: 'Monthly budget',
         description: 'some description2'
       }, {
+        nodeId: 3,
         name: 'Bills',
         description: 'some description3'
       }, {
+        nodeId: 4,
         name: 'Electricity',
         description: 'some description4'
       }, {
+        nodeId: 5,
         name: 'Water',
         description: 'some description4'
       }, {
+        nodeId: 6,
         name: 'Gas',
         description: 'some description4'
       }, {
+        nodeId: 7,
         name: 'Internet',
         description: 'some description4'
       }, {
+        nodeId: 8,
         name: 'Telephone',
         description: 'some description4'
       }, {
+        nodeId: 9,
         name: 'Hobbies',
         description: 'some description4'
       }, {
+        nodeId: 10,
         name: 'Food',
         description: 'some description4'
       }, {
+        nodeId: 11,
         name: 'Games',
         description: 'some description4'
       }, {
+        nodeId: 12,
         name: 'Clothes',
         description: 'some description4'
       }, {
+        nodeId: 13,
         name: 'Apps',
         description: 'some description4'
       }, {
+        nodeId: 14,
         name: 'Monthly subscriptions',
         description: 'some description4'
       }, {
+        nodeId: 15,
         name: 'Netflix',
         description: 'some description4'
       }, {
+        nodeId: 16,
         name: 'Amazon Prime',
         description: 'some description4'
       }, {
-        name: 'Other',
-        description: 'some description4'
-      }, {
+        nodeId: 18,
         name: 'Credit card fees',
         description: 'some description4'
       }, {
+        nodeId: 19,
         name: 'Investments',
         description: 'some description4'
       }, {
+        nodeId: 20,
         name: 'Rent',
+        description: 'some description4'
+      }, {
+        nodeId: 17,
+        name: 'Other',
         description: 'some description4'
       }],
       links: [{
@@ -286,5 +308,7 @@ export class AppComponent {
 
     this.sankeyDiagramNodes = sankeyDataBig.nodes;
     this.sankeyDiagramLinks = sankeyDataBig.links;
+
+    this.sankeyDiagramOptions = {nodeId: node => node.nodeId};
   }
 }

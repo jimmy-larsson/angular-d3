@@ -32,6 +32,7 @@ export class SankeyDiagram {
     this.options.nodeAlign = options.nodeAlign != null ? options.nodeAlign : this.options.getNodeAlign();
     this.options.nodeWidth = options.nodeWidth != null ? options.nodeWidth : this.options.getNodeWidth();
     this.options.nodePadding = options.nodePadding != null ? options.nodePadding : this.options.getNodePadding();
+    this.options.nodeId = options.nodeId != null ? options.nodeId : this.options.getNodeId();
     this.options.layoutExtent = options.layoutExtent != null ? options.layoutExtent : this.options.getLayoutExtent();
     this.options.layoutIterations = options.layoutIterations != null ? options.layoutIterations : this.options.getLayoutIterations();
     this.options.layoutWidth = options.layoutWidth != null ? options.layoutWidth : this.options.getLayoutWidth();
@@ -59,11 +60,16 @@ export class SankeyDiagram {
   initSankey(options?) {
     this.setOption(options);
 
+    const defaultValue = function(d: Node<ExtraProperties, ExtraProperties>) {
+      return d.index;
+    };
+
     this.sankey = d3Sankey.sankey()
       .nodeWidth(this.options.getNodeWidth())
       .nodePadding(this.options.getNodePadding())
       .iterations(this.options.getLayoutIterations())
-      .extent(this.options.getLayoutExtent());
+      .extent(this.options.getLayoutExtent())
+      .nodeId(this.options.getNodeId());
 
     switch (this.options.getNodeAlign()) {
       case NodeAlignment.LEFT:
