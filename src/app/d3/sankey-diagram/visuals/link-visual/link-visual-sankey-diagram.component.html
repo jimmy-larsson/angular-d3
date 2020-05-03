@@ -20,7 +20,7 @@
   *ngIf="link.y0 === link.y1"
   class="link"
   [attr.x]="link.source.x1"
-  [attr.y]="link.source.y0"
+  [attr.y]="link.target.y0"
   [attr.height]="link.target.y1 - link.target.y0"
   [attr.width]="link.target.x0 - link.source.x1"
   [attr.fill]="'url(#' + generateLinkId() +')'">

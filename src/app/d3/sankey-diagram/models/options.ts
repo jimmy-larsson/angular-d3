@@ -74,7 +74,7 @@ export class Options {
   }
 
   getLayoutExtent?(): [[number, number], [number, number]] {
-    return this.layoutExtent != null ? this.layoutExtent : [[0, 0], [this.getLayoutWidth() - this.getNodeWidth(), this.getLayoutHeight()]];
+    return this.layoutExtent != null ? this.layoutExtent : [[0, 0], [this.getLayoutWidth() - this.getNodeWidth(), this.getLayoutHeight() - 10]];
   }
 
   getLayoutIterations?(): number {

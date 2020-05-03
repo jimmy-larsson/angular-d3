@@ -193,7 +193,7 @@ export class AppComponent {
       }, {
         source: 2,
         target: 3,
-        value: 86500,
+        value: 87600,
         uom: 'Widget(s)'
       }, {
         source: 3,
@@ -273,7 +273,7 @@ export class AppComponent {
       }, {
         source: 2,
         target: 19,
-        value: 265500,
+        value: 264500,
         uom: 'Widget(s)'
       }, {
         source: 3,
