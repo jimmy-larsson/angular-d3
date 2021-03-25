@@ -12,8 +12,8 @@ import { ColoringMethod, ColorSchemeInterpolation, ExtraProperties, Link, Node, 
   styleUrls: ['./sankey.component.scss']
 })
 export class SankeyDiagramComponent implements OnInit, AfterViewInit {
-  @Input('nodes') nodes: Node<ExtraProperties, ExtraProperties>;
-  @Input('links') links: Link<ExtraProperties, ExtraProperties>;
+  @Input('nodes') nodes: Node<ExtraProperties, ExtraProperties>[];
+  @Input('links') links: Link<ExtraProperties, ExtraProperties>[];
   @Input('options') options: Options;
 
   sankeyDiagram: SankeyDiagram;
