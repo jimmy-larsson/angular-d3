@@ -1,0 +1,22 @@
+.welcome {
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+.d3-list {
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+
+  .d3-list-option {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  .d3-list-option:hover {
+    font-weight: bold;
+  }
+}
