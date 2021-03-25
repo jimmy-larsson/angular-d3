@@ -82,226 +82,247 @@ export class AppComponent {
         source: 0,
         target: 2,
         value: 450000,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }, {
         source: 1,
         target: 2,
         value: 1000,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }, {
         source: 2,
         target: 3,
         value: 86500,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }, {
         source: 3,
         target: 4,
         value: 5500,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }, {
         source: 3,
         target: 5,
         value: 5000,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }, {
         source: 3,
         target: 6,
         value: 3500,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }, {
         source: 3,
         target: 7,
         value: 5200,
-        uom: 'Widget(s)'
+        uom: 'USD'
       }
       ]
     };
     const sankeyDataBig: Data = {
       nodes: [{
         nodeId: 0,
-        name: 'Work income',
-        description: 'some description0'
+        name: 'Monthly gross salary',
+        description: 'some description0',
+        uom: 'USD'
       }, {
         nodeId: 1,
-        name: 'Stock dividends',
-        description: 'some description1'
+        name: 'Monthly gross dividend',
+        description: 'some description1',
+        uom: 'USD'
       }, {
         nodeId: 2,
-        name: 'Monthly budget',
-        description: 'some description2'
+        name: 'Income',
+        description: 'some description2',
+        uom: 'USD'
       }, {
         nodeId: 3,
         name: 'Bills',
-        description: 'some description3'
+        description: 'some description3',
+        uom: 'USD'
       }, {
         nodeId: 4,
         name: 'Electricity',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 5,
         name: 'Water',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 6,
         name: 'Gas',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 7,
         name: 'Internet',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 8,
         name: 'Telephone',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 9,
         name: 'Hobbies',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 10,
         name: 'Food',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 11,
         name: 'Games',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 12,
         name: 'Clothes',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 13,
         name: 'Apps',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 14,
         name: 'Monthly subscriptions',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 15,
         name: 'Netflix',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 16,
         name: 'Amazon Prime',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 18,
         name: 'Credit card fees',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 19,
         name: 'Investments',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 20,
         name: 'Rent',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }, {
         nodeId: 17,
         name: 'Other',
-        description: 'some description4'
+        description: 'some description4',
+        uom: 'USD'
       }],
       links: [{
         source: 0,
         target: 2,
-        value: 450000,
-        uom: 'Widget(s)'
+        value: 1150,
+        uom: 'USD'
       }, {
         source: 1,
         target: 2,
-        value: 1000,
-        uom: 'Widget(s)'
+        value: 100,
+        uom: 'USD'
       }, {
         source: 2,
         target: 3,
-        value: 87600,
-        uom: 'Widget(s)'
+        value: 500,
+        uom: 'USD'
       }, {
         source: 3,
         target: 4,
-        value: 5500,
-        uom: 'Widget(s)'
+        value: 50,
+        uom: 'USD'
       }, {
         source: 3,
         target: 5,
-        value: 5000,
-        uom: 'Widget(s)'
+        value: 30,
+        uom: 'USD'
       }, {
         source: 3,
         target: 6,
-        value: 3500,
-        uom: 'Widget(s)'
+        value: 40,
+        uom: 'USD'
       }, {
         source: 3,
         target: 7,
-        value: 5200,
-        uom: 'Widget(s)'
+        value: 20,
+        uom: 'USD'
       }, {
         source: 3,
         target: 8,
-        value: 1100,
-        uom: 'Widget(s)'
+        value: 5,
+        uom: 'USD'
       }, {
         source: 2,
         target: 9,
-        value: 40000,
-        uom: 'Widget(s)'
+        value: 210,
+        uom: 'USD'
       }, {
         source: 2,
         target: 10,
-        value: 44000,
-        uom: 'Widget(s)'
+        value: 350,
+        uom: 'USD'
       }, {
         source: 9,
         target: 11,
-        value: 25000,
-        uom: 'Widget(s)'
+        value: 8,
+        uom: 'USD'
       }, {
         source: 2,
         target: 12,
-        value: 15000,
-        uom: 'Widget(s)'
+        value: 100,
+        uom: 'USD'
       }, {
         source: 9,
         target: 13,
-        value: 10000,
-        uom: 'Widget(s)'
+        value: 2,
+        uom: 'USD'
       }, {
         source: 9,
         target: 14,
-        value: 5000,
-        uom: 'Widget(s)'
+        value: 200,
+        uom: 'USD'
       }, {
         source: 14,
         target: 15,
-        value: 1500,
-        uom: 'Widget(s)'
+        value: 100,
+        uom: 'USD'
       }, {
         source: 14,
         target: 16,
-        value: 1500,
-        uom: 'Widget(s)'
+        value: 100,
+        uom: 'USD'
       }, {
         source: 2,
         target: 17,
-        value: 1000,
-        uom: 'Widget(s)'
+        value: 5,
+        uom: 'USD'
       }, {
         source: 17,
         target: 18,
-        value: 1000,
-        uom: 'Widget(s)'
+        value: 5,
+        uom: 'USD'
       }, {
         source: 2,
         target: 19,
-        value: 264500,
-        uom: 'Widget(s)'
+        value: 85,
+        uom: 'USD'
       }, {
         source: 3,
         target: 20,
-        value: 67300,
-        uom: 'Widget(s)'
+        value: 355,
+        uom: 'USD'
       }
       ]
     };

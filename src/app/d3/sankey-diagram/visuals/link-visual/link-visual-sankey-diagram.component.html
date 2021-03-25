@@ -14,7 +14,7 @@
   [attr.d]="linkHorizontal()"
   [attr.stroke-width]="getStrokeWidth()"
   [attr.stroke]="'url(#' + generateLinkId() +')'">
-  <title>{{ link.source.name }} -> {{ link.target.name }} - {{ link.value }}</title>
+  <title>{{ link.source.name }} -> {{ link.target.name }}: {{ link.value }} {{ link.uom }}</title>
 </svg:path>
 <svg:rect
   *ngIf="link.y0 === link.y1"
@@ -24,5 +24,5 @@
   [attr.height]="link.target.y1 - link.target.y0"
   [attr.width]="link.target.x0 - link.source.x1"
   [attr.fill]="'url(#' + generateLinkId() +')'">
-  <title>{{ link.source.name }} -> {{ link.target.name }} - {{ link.value }}</title>
+  <title>{{ link.source.name }} -> {{ link.target.name }}: {{ link.value }} {{ link.uom }}</title>
 </svg:rect>

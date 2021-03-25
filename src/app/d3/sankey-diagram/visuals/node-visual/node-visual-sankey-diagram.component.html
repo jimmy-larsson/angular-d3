@@ -6,7 +6,7 @@
   [attr.width]="node.x1 - node.x0"
   [attr.fill]="colorGenerator(node.index)"
   [attr.stroke]="'#000'">
-  <title>{{ node.name }} - {{ node.value }}</title>
+  <title>{{ node.name }}: {{ node.value }} {{ node.uom }}</title>
 </svg:rect>
 <svg:text
   class="node-name"
